@@ -2,12 +2,15 @@ import 'dart:convert';
 
 import 'package:rick_and_morty/models/character.dart';
 import 'package:http/http.dart' as http;
+import 'package:rick_and_morty/models/page.dart';
+import 'package:rick_and_morty/page_fetcher/page_fetcher.dart';
 
-class CharacterFetcher {
+class CharacterFetcher implements PageFetcher<Character>{
 
   static const String _baseUrl = "https://rickandmortyapi.com/api";
 
-  Future<Character> fetch(int id) async {
+  @override
+  Future<Character> fetchItemById(int id) async {
     Uri uri = Uri.parse(_baseUrl);
     uri = uri.replace(
       pathSegments: ['api', 'character', id.toString()]
@@ -17,16 +20,23 @@ class CharacterFetcher {
     return Character.fromJson(jsonResponse);
   }
 
-  Future<List<Character>> fetchPage(int page) async {
+  @override
+  Future<Page<Character>> fetchPage(int pageNumber) async {
     Uri uri = Uri.parse(_baseUrl);
     uri = uri.replace(
       pathSegments: ['api', 'character'],
       queryParameters: {
-        'page': page.toString()
+        'page': pageNumber.toString()
       }
     );
     var response = await http.get(uri);
     Map<String, dynamic> jsonResponse = jsonDecode(response.body);
-    return [for(dynamic characterJson in jsonResponse['results']) Character.fromJson(characterJson)];
+    Page<Character> page = Page(
+      pageNumber,
+      Character.listFromJson(jsonResponse['results']),
+      jsonResponse['next'] != null,
+      jsonResponse['prev'] != null
+    );
+    return page;
   }
 }

@@ -19,4 +19,7 @@ class Character {
       origin = json['origin']['name'],
       imgUrl = json['image'],
       episodes = List<String>.from(json['episode']);
+
+  static List<Character> listFromJson(List<dynamic> json) =>
+    List<Character>.from([for(dynamic characterJson in json) Character.fromJson(characterJson)]);
 }
