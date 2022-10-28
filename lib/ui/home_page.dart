@@ -24,11 +24,11 @@ class HomePage extends StatelessWidget {
           if (state is PageShowing<Character>) {
             return CharacterCardList(state.page.items);
           }
-          else if (state is PageFetchingError) {
-            return Text('woops');
+          else if (state is PageError) {
+            return const Text('woops');
           }
           else if (state is LoadingPage) {
-            return Text("Loading...");
+            return const Text("Loading...");
           }
           else {
             throw Exception("Unknown state");

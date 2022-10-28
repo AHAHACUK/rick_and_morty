@@ -7,14 +7,14 @@ void main() async {
   group('Character fetcher', (){
     test('fetch(1) should return Rick', () async {
       final fetcher = CharacterFetcher();
-      Character character = await fetcher.fetchItemById(1);
-      expect(character.name, 'Rick Sanchez');
+      Character? character = await fetcher.fetchItemById(1);
+      expect(character?.name, 'Rick Sanchez');
     });
 
     test('fetchPage(0) should return 20 characters', () async {
       final fetcher = CharacterFetcher();
-      Page page = await fetcher.fetchPage(1);
-      expect(page.items.length, 20);
+      Page? page = await fetcher.fetchPage(1);
+      expect(page?.items.length, 20);
     });
   });
 }

@@ -12,20 +12,14 @@ class PageTurnerBloc<T> extends Bloc<PageTurnerEvent, PageTurnerState> {
   Page<T>? currentPage;
   
   PageTurnerBloc(this.pageFetcher) : super(LoadingPage()) {
-    on<PageTurnerInit>((event, emit) {
-      pageFetcher.fetchPage(1).then(
-        (page) {
-          currentPage = page;
-          add(PageLoaded(page));
-        },
-        onError: (error) => add(PageFetchingError())
-      );
-    });
-    on<PageLoaded<T>>((event, emit) {
-      emit(PageShowing<T>(event.page));
-    });
-    on<PageFetchingError>((event, emit) {
-      emit(PageError());
+    on<PageTurnerInit>((event, emit) async {
+      Page<T>? page = await pageFetcher.fetchPage(1);
+      if (page != null) {
+        emit(PageShowing(page));
+      }
+      else {
+        emit(PageError());
+      }
     });
     on<NextButtonPressed>((event, emit) {
       
