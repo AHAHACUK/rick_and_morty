@@ -15,9 +15,7 @@ class HomePage extends StatelessWidget {
     PageTurnerBloc<Character> pageTurnerBloc = PageTurnerBloc(CharacterFetcher());
     pageTurnerBloc.add(PageTurnerInit());
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
-      ),
+      appBar: AppBar(),
       body: BlocBuilder<PageTurnerBloc<Character>, PageTurnerState>(
         bloc: pageTurnerBloc,
         builder: (context, state) {
