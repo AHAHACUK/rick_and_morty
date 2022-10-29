@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/page_turner_bloc.dart';
 import 'package:rick_and_morty/models/character.dart';
-import 'package:rick_and_morty/page_fetcher/character_fetcher.dart';
+import 'package:rick_and_morty/fetchers/page_fetcher/character_fetcher.dart';
 import 'package:rick_and_morty/ui/card_list.dart';
 
 class HomePage extends StatelessWidget {

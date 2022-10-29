@@ -6,9 +6,9 @@ class Character {
   final String gender;
   final String origin;
   final String imgUrl;
-  final List<String> episodes;
+  final List<int> episodesIds;
 
-  const Character(this.name, this.status, this.species, this.type, this.gender, this.origin, this.imgUrl, this.episodes);
+  const Character(this.name, this.status, this.species, this.type, this.gender, this.origin, this.imgUrl, this.episodesIds);
 
   Character.fromJson(Map<String, dynamic> json)
     : name = json['name'],
@@ -18,8 +18,14 @@ class Character {
       gender = json['gender'],
       origin = json['origin']['name'],
       imgUrl = json['image'],
-      episodes = List<String>.from(json['episode']);
+      episodesIds = List<String>.from(json['episode']).map((e) => _EpisodeIdFromUrl(e)).toList();
 
   static List<Character> listFromJson(List<dynamic> json) =>
     List<Character>.from([for(dynamic characterJson in json) Character.fromJson(characterJson)]);
+
+  static int _EpisodeIdFromUrl(String url) {
+    Uri uri = Uri.parse(url);
+    int id = int.parse(uri.pathSegments.last);
+    return id;
+  }
 }

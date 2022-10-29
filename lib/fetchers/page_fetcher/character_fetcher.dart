@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:rick_and_morty/models/character.dart';
 import 'package:http/http.dart' as http;
 import 'package:rick_and_morty/models/page.dart';
-import 'package:rick_and_morty/page_fetcher/page_fetcher.dart';
+import 'package:rick_and_morty/fetchers/page_fetcher/page_fetcher.dart';
 
 class CharacterFetcher implements PageFetcher<Character>{
 

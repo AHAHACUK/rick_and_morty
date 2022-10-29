@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:rick_and_morty/models/character.dart';
 import 'package:rick_and_morty/models/page.dart';
-import 'package:rick_and_morty/page_fetcher/page_fetcher.dart';
+import 'package:rick_and_morty/fetchers/page_fetcher/page_fetcher.dart';
 
 part 'page_turner_event.dart';
 part 'page_turner_state.dart';

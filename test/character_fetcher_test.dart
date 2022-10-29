@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:rick_and_morty/models/character.dart';
 import 'package:rick_and_morty/models/page.dart';
-import 'package:rick_and_morty/page_fetcher/character_fetcher.dart';
+import 'package:rick_and_morty/fetchers/page_fetcher/character_fetcher.dart';
 
 void main() async {
   group('Character fetcher', (){
