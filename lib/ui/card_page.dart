@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/bloc/content_loader_bloc.dart';
+import 'package:rick_and_morty/bloc/function_loader_bloc.dart';
 import 'package:rick_and_morty/models/character.dart';
 import 'package:rick_and_morty/models/episode.dart';
 import 'package:rick_and_morty/fetchers/episode_fetcher.dart';
@@ -16,7 +17,7 @@ class CharacterCardPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     EpisodeFetcher episodeFetcher = EpisodeFetcher();
-    ContentLoaderBloc<List<Episode>> contentLoader = ContentLoaderBloc(
+    FunctionLoaderBloc<List<Episode>> contentLoader = FunctionLoaderBloc(
         () => episodeFetcher.fetchListByIds(character.episodesIds));
     contentLoader.add(ContentLoadInit());
     return Scaffold(

@@ -1,7 +1,5 @@
-import 'package:rick_and_morty/models/page.dart';
+import 'package:rick_and_morty/models/content_page.dart';
 
 abstract class PageFetcher<T> {
-  
-  Future<T?> fetchItemById(int id);
-  Future<Page<T>?> fetchPage(int page);
+  Future<ContentPage<T>?> fetchPage(int page);
 }
