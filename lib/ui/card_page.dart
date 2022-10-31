@@ -76,14 +76,11 @@ class CharacterCardPage extends StatelessWidget {
                                                   "[${episode.code}] ${episode.name}")
                                             ]);
                                           }));
-                                    }
-                                    else if (state is NoContent) {
+                                    } else if (state is NoContent) {
                                       return Container();
-                                    }
-                                    else if (state is LoadingError){
+                                    } else if (state is LoadingError) {
                                       return const Text('woops');
-                                    }
-                                    else {
+                                    } else {
                                       throw Exception("Unknown state");
                                     }
                                   },

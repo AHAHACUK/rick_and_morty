@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rick_and_morty/models/character.dart';
 import 'package:rick_and_morty/ui/card_page.dart';
 import 'package:rick_and_morty/ui/circle_clipper.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class CharacterCardList extends StatelessWidget {
   final List<Character> characters;
@@ -21,7 +22,7 @@ class CharacterCardList extends StatelessWidget {
                 width: 60,
                 child: ClipOval(
                     clipper: CircleClipper(),
-                    child: Image.network(character.imgUrl)),
+                    child: FadeInImage.memoryNetwork(placeholder: kTransparentImage, image: character.imgUrl)),
               ),
             ),
             title: Text(character.name),
