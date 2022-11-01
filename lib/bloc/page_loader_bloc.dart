@@ -14,12 +14,8 @@ class PageLoaderBloc<T> extends ContentLoaderBloc<ContentPage<T>> {
   Future<ContentPage<T>?> Function() get fetcher => () => pageFetcher.fetchPage(pageNumber);
   
   PageLoaderBloc(this.pageFetcher) : super() {
-    on<NextButtonPressed>((event, emit) {
-      pageNumber += 1;
-      add(ContentLoadInit());
-    });
-    on<PrevButtonPressed>((event, emit) {
-      pageNumber -= 1;
+    on<PageOrdered>((event, emit) {
+      pageNumber = event.pageNumber;
       add(ContentLoadInit());
     });
   }

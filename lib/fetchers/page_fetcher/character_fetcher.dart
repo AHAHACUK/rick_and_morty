@@ -25,6 +25,7 @@ class CharacterFetcher implements PageFetcher<Character>{
     }
     Map<String, dynamic> jsonResponse = jsonDecode(response.body);
     ContentPage<Character> page = ContentPage(
+      jsonResponse['info']['pages'],
       pageNumber,
       Character.listFromJson(jsonResponse['results']),
       jsonResponse['next'] != null,
