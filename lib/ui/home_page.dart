@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
                 builder: (context, state) {
                   if (state is ContentLoaded<ContentPage<Character>>) {
                     ContentPage<Character> page = state.content;
-                    return PageNavigator(state.content, (newPage) => pageTurnerBloc.add(PageOrdered(newPage)));
+                    return PageNavigator(page, (newPage) => pageTurnerBloc.add(PageOrdered(newPage)));
                   } else if (state is LoadingError) {
                     return const PageNavigatorPlaceholder();
                   } else if (state is NoContent) {

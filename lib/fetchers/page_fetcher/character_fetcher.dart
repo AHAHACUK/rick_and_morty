@@ -28,8 +28,8 @@ class CharacterFetcher implements PageFetcher<Character>{
       jsonResponse['info']['pages'],
       pageNumber,
       Character.listFromJson(jsonResponse['results']),
-      jsonResponse['next'] != null,
-      jsonResponse['prev'] != null
+      jsonResponse['info']['next'] != null,
+      jsonResponse['info']['prev'] != null
     );
     return page;
   }
